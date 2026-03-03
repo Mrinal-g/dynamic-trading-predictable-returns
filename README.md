@@ -1,3 +1,5 @@
+Quantitative Finance | Portfolio Optimization | Reinforcement Learning
+
 # Dynamic Trading with Predictable Returns & Transaction Costs
 
 Capstone Project – MS Financial Engineering  
