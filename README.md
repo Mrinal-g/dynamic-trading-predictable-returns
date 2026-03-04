@@ -43,6 +43,18 @@ The modeling pipeline consists of:
 
 ---
 
+## Key Techniques
+
+- Dynamic Portfolio Optimization  
+- Transaction Cost Modeling  
+- Factor-Based Return Prediction  
+- VAR(1) Signal Dynamics  
+- Ledoit–Wolf Covariance Shrinkage  
+- Reinforcement Learning (PPO)  
+- Portfolio Backtesting
+
+---
+
 ## Strategy Performance (γ = 3)
 
 | Strategy | Annual Return | Volatility | Sharpe Ratio | Max Drawdown |
@@ -70,6 +82,18 @@ report/
 presentation/
     dynamic_trading_capstone_presentation.pptx
 ```
+
+---
+
+## Tech Stack
+
+- Python  
+- NumPy  
+- Pandas  
+- CVXPY  
+- Gymnasium  
+- Stable-Baselines3  
+- Matplotlib
 
 ---
 
