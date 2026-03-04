@@ -1,9 +1,11 @@
 # Dynamic Trading with Predictable Returns & Transaction Costs
 
+Quantitative Finance | Portfolio Optimization | Reinforcement Learning
+
 Capstone Project — MS Financial Engineering  
 Stevens Institute of Technology
 
-This project implements the dynamic trading framework proposed by **Gârleanu & Pedersen (2013)** to study portfolio allocation under predictable returns and transaction costs. The model is extended with a **Reinforcement Learning (PPO)** trading agent to explore adaptive portfolio strategies.
+This project implements the dynamic trading framework proposed by **Gârleanu & Pedersen (2013)** to study portfolio allocation under predictable returns and transaction costs. The analytical framework is extended with a **Reinforcement Learning (PPO)** trading agent to explore adaptive portfolio strategies.
 
 ---
 
@@ -24,8 +26,8 @@ Key goals:
 
 The analysis uses widely studied empirical asset pricing datasets.
 
-- **Fama-French factors + Momentum**
-- **10 Fama-French Industry Portfolios**
+- Fama-French factor dataset (including the Momentum factor)
+- 10 Fama-French Industry Portfolios
 
 Period: **1963 – 2024**
 
@@ -43,6 +45,36 @@ The modeling pipeline consists of:
 
 ---
 
+## Dynamic Trading Framework
+
+The dynamic trading strategy follows the framework proposed by Gârleanu & Pedersen (2013).  
+Instead of rebalancing fully to the optimal Markowitz portfolio each period, the portfolio
+moves gradually toward a target allocation in order to control transaction costs.
+
+The portfolio update rule can be expressed as:
+
+x_{t+1} = (1 - κ) x_t + κ Aim_t
+
+where:
+
+- x_t = current portfolio weights
+- Aim_t = target (Markowitz) portfolio based on expected returns
+- κ = trading rate controlling how quickly the portfolio moves toward the target
+
+This **partial adjustment mechanism** balances expected return against transaction costs and
+reduces excessive portfolio turnover.
+
+The target portfolio ("aim") is the frictionless optimal allocation:
+
+Aim_t = Σ⁻¹ μ_t
+
+where:
+
+- μ_t = expected return vector
+- Σ = covariance matrix of asset returns
+
+---
+
 ## Key Techniques
 
 - Dynamic Portfolio Optimization  
@@ -55,17 +87,22 @@ The modeling pipeline consists of:
 
 ---
 
-## Strategy Performance (γ = 3)
+## Strategy Performance (Risk Aversion γ = 3)
 
-| Strategy | Annual Return | Volatility | Sharpe Ratio |
-|----------|--------------|-----------|--------------|
-| Dynamic Strategy | 14.33% | 20.70% | 0.69 |
-| Markowitz Portfolio | 10.41% | 12.95% | 0.80 |
-| RL Strategy (PPO) | 14.14% | 21.72% | 0.65 |
+| Strategy | Annual Return (%) | Volatility (%) | Sharpe Ratio |
+|----------|------------------|---------------|--------------|
+| Dynamic Strategy | 14.3 | 20.7 | 0.69 |
+| Markowitz Portfolio | 10.4 | 13.0 | 0.80 |
+| RL Strategy (PPO) | 14.1 | 21.7 | 0.65 |
 
-The dynamic trading strategy generates higher cumulative returns relative to the classical Markowitz portfolio by incorporating predictable returns and transaction costs, while reinforcement learning provides comparable performance in adaptive trading environments.
-
+The dynamic trading strategy achieves higher cumulative returns, while the Markowitz portfolio exhibits a higher Sharpe ratio due to lower volatility. The reinforcement learning strategy shows comparable performance.
 ---
+
+## Key Findings
+
+- Dynamic portfolio optimization improves cumulative returns relative to classical Markowitz allocation.
+- Transaction cost modeling leads to more realistic trading behavior.
+- Reinforcement learning provides comparable performance in adaptive portfolio allocation.
 
 ## Repository Structure
 
